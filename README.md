@@ -1,2 +1,2 @@
 # kv
-Simple Key-Value tool build with Golang
+Super simple file based Key-Value tool build with Golang
