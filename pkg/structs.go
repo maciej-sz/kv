@@ -1,6 +1,6 @@
 package pkg
 
 type Value struct {
-	Val    string
-	Quoted bool
+	Val   string
+	Quote string
 }

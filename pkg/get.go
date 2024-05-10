@@ -35,8 +35,8 @@ func ParseKeyValueFile(filePath string) (map[string]*Value, error) {
 
 		key := strings.TrimSpace(parts[0])
 		value := &Value{
-			Val:    strings.TrimSpace(parts[1]),
-			Quoted: false,
+			Val:   strings.TrimSpace(parts[1]),
+			Quote: "",
 		}
 
 		if value.Val[0:1] == "#" {
@@ -44,10 +44,14 @@ func ParseKeyValueFile(filePath string) (map[string]*Value, error) {
 		}
 
 		// Remove surrounding quotes if present
-		if (strings.HasPrefix(value.Val, "\"") && strings.HasSuffix(value.Val, "\"")) ||
-			(strings.HasPrefix(value.Val, "'") && strings.HasSuffix(value.Val, "'")) {
+		if strings.HasPrefix(value.Val, "\"") && strings.HasSuffix(value.Val, "\"") {
+			value.Quote = "\""
+		} else if strings.HasPrefix(value.Val, "'") && strings.HasSuffix(value.Val, "'") {
+			value.Quote = "'"
+		}
+
+		if value.Quote != "" {
 			value.Val = value.Val[1 : len(value.Val)-1]
-			value.Quoted = true
 		}
 
 		kv[key] = value

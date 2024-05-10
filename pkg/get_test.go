@@ -25,9 +25,9 @@ key3='value3'
 	assert.NoError(t, err)
 	assert.NotNil(t, result)
 	assert.Equal(t, "value1", result["key1"].Val)
-	assert.True(t, result["key2"].Quoted)
+	assert.Equal(t, "\"", result["key2"].Quote)
 	assert.Equal(t, "value2", result["key2"].Val)
-	assert.True(t, result["key3"].Quoted)
+	assert.Equal(t, "'", result["key3"].Quote)
 	assert.Equal(t, "value3", result["key3"].Val)
 }
 
