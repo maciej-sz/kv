@@ -20,8 +20,10 @@ key3='value3'
 	assert.NoError(t, err)
 	tmpFile.Close()
 
+	parser := &KvParser{}
+
 	// Call the function
-	result, err := ParseKeyValueFile(tmpFile.Name())
+	result, err := parser.ParseKeyValueFile(tmpFile.Name())
 	assert.NoError(t, err)
 	assert.NotNil(t, result)
 	assert.Equal(t, "value1", result["key1"].Val)
@@ -44,8 +46,9 @@ key3='value3'
 	assert.NoError(t, err)
 	tmpFile.Close()
 
+	parser := &KvParser{}
 	// Call the function
-	_, err = ParseKeyValueFile(tmpFile.Name())
+	_, err = parser.ParseKeyValueFile(tmpFile.Name())
 	assert.Error(t, err)
 	assert.Equal(t, "invalid line: key2", err.Error())
 }

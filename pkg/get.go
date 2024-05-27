@@ -7,16 +7,24 @@ import (
 	"strings"
 )
 
-func ParseKeyValueFile(filePath string) (map[string]*Value, error) {
+type Parser interface {
+	ParseKeyValueFile(filePath string) (map[string]*Value, error)
+}
+
+var _ Parser = &KvParser{}
+
+type KvParser struct{}
+
+func (p *KvParser) ParseKeyValueFile(filePath string) (map[string]*Value, error) {
+	kv := make(map[string]*Value)
 	file, err := os.Open(filePath)
 	if err != nil {
-		return nil, err
+		return kv, nil
 	}
 	defer func(file *os.File) {
 		err = file.Close()
 	}(file)
 
-	kv := make(map[string]*Value)
 	scanner := bufio.NewScanner(file)
 
 	for scanner.Scan() {
