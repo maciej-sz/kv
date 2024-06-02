@@ -6,6 +6,7 @@ import (
 	"testing"
 )
 
+// Deprecated: This has been covered by cmd/get_test.go
 func TestParseKeyValueFile_Success(t *testing.T) {
 	// Create a temporary file with test data
 	content := `key1=value1
@@ -33,6 +34,7 @@ key3='value3'
 	assert.Equal(t, "value3", result["key3"].Val)
 }
 
+// Deprecated: This has been covered by cmd/get_test.go
 func TestParseKeyValueFile_Failure(t *testing.T) {
 	// Create a temporary file with test data
 	content := `key1=value1
