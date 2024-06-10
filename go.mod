@@ -1,4 +1,4 @@
-module github.com/maciej-sz/kv
+module github.com/oxio/kv
 
 go 1.22.0
 

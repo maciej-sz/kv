@@ -1,6 +1,6 @@
 package main
 
-import "github.com/maciej-sz/kv/cmd"
+import "github.com/oxio/kv/cmd"
 
 func main() {
 	cmd.Execute()
