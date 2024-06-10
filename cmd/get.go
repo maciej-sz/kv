@@ -1,10 +1,7 @@
 package cmd
 
 import (
-	"fmt"
-	"github.com/maciej-sz/kv/pkg"
-	"os"
-
+	"github.com/oxio/kv/pkg"
 	"github.com/spf13/cobra"
 )
 
@@ -32,14 +29,11 @@ func newGetCmd() *cobra.Command {
 			}
 
 			if err != nil {
-				cmd.PrintErr(err)
-				_, err = fmt.Fprintf(os.Stderr, "error: %v", err)
 				return err
 			}
 
 			cmd.Print(val)
 
-			//fmt.Print(val)
 			return nil
 		},
 	}

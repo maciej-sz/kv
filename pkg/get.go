@@ -19,7 +19,7 @@ func (p *KvParser) ParseKeyValueFile(filePath string) (map[string]*Value, error)
 	kv := make(map[string]*Value)
 	file, err := os.Open(filePath)
 	if err != nil {
-		return kv, nil
+		return nil, err
 	}
 	defer func(file *os.File) {
 		err = file.Close()

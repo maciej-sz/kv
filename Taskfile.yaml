@@ -1,6 +1,14 @@
 version: '3'
 
 tasks:
+
+  default:
+    silent: true
+    cmds:
+      - task -l
+
+  desc: "foo"
   test:
+    desc: "Run tests"
     cmds:
       - go test -v ./...
